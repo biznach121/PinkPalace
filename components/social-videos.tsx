@@ -5,9 +5,12 @@ import { useEffect, useRef, useState } from "react";
 
 // Stage 4: the TikTok/social section is the ONLY place we use the business's own
 // videos. Swapped per business (up to 4 of their real TikTok clips, on Cloudinary).
-// @_pinkpalace_ has 1 scraped video.
+// @_pinkpalace_ scraped with 1 video; topped up to 4 via stage4_videos.py (Apify).
 const VIDEOS = [
   "https://res.cloudinary.com/dzykdnbvb/video/upload/v1782494541/stage4/pinkpalace/tiktok_0.mp4",
+  "https://res.cloudinary.com/dzykdnbvb/video/upload/v1782495658/stage4/pinkpalace/tiktok_1.mp4",
+  "https://res.cloudinary.com/dzykdnbvb/video/upload/v1782495661/stage4/pinkpalace/tiktok_2.mp4",
+  "https://res.cloudinary.com/dzykdnbvb/video/upload/v1782495663/stage4/pinkpalace/tiktok_3.mp4",
 ];
 
 export function SocialVideos({ handle }: { handle: string }) {
