@@ -3,8 +3,8 @@
  *
  * The SDK mock ships a generic `fashion` seed (Studio FRX hoodies/tees). For the
  * demo we replace that catalogue in-place with this brand's eyewear line-up:
- * frames across the three storefront categories (optical, clip-on, and
- * statement), each with a frame-fit axis and the same campaign imagery used by
+ * frames across the three storefront categories (prescription, futuristic, and
+ * blue-light), each with a frame-fit axis and the same campaign imagery used by
  * the home page's "Shop by category" section — so a preview demo stays visually
  * consistent end to end.
  *
@@ -47,34 +47,41 @@ type ProductSpec = {
   variants?: ColorVariantSpec[];
 };
 
-// Real product photography from the business's TikTok (Stage 4 → Cloudinary,
-// folder stage4/pinkpalace). Only a few real shots exist, so products pair their
-// own shot with a sibling shot for a two-thumbnail PDP gallery (demo only — a
-// real tenant uploads front/angle/detail shots per product on the dashboard).
-const TORT_CATEYE =
-  "https://res.cloudinary.com/dzykdnbvb/image/upload/v1782492278/stage4/pinkpalace/img_000.jpg"; // tortoiseshell cat-eye on model
-const NOIR_CATEYE =
-  "https://res.cloudinary.com/dzykdnbvb/image/upload/v1782492281/stage4/pinkpalace/img_001.jpg"; // black cat-eye on model
-const TORT_PRODUCT =
-  "https://res.cloudinary.com/dzykdnbvb/image/upload/v1782492283/stage4/pinkpalace/img_002.jpg"; // tortoiseshell product shot w/ logo
-const CLIPON_FAN =
-  "https://res.cloudinary.com/dzykdnbvb/image/upload/v1782492284/stage4/pinkpalace/cover_000.jpg"; // in-store, clip-on fan
+// Real frame photography. One shot per frame; products pair their own shot with
+// a sibling frame's shot so every PDP gallery shows two thumbnails (demo only —
+// a real tenant uploads front/angle/detail shots per product on the dashboard).
+const GREEN_HEX =
+  "https://res.cloudinary.com/dcc5ggnkc/image/upload/v1782397348/exlwdxciti1fol6ncbxx.png";
+const NAVY_SPORT =
+  "https://res.cloudinary.com/dcc5ggnkc/image/upload/v1782397347/vpqc2def1pfo1j4lnxvn.png";
+const SILVER_AVIATOR =
+  "https://res.cloudinary.com/dcc5ggnkc/image/upload/v1782397346/aefp7ltn5oghf1owrye6.png";
+const PINK_ROUND =
+  "https://res.cloudinary.com/dcc5ggnkc/image/upload/v1782397347/n67tdrluvrxctlnefvaj.png";
+const RED_CATEYE =
+  "https://res.cloudinary.com/dcc5ggnkc/image/upload/v1782397345/wbdvsp4wuqzphtya36ig.png";
+const TORTOISE_CATEYE =
+  "https://res.cloudinary.com/dcc5ggnkc/image/upload/v1782455913/tjbbscvo91evpqgppxrf.png";
+const CLEAR_SQUARE =
+  "https://res.cloudinary.com/dcc5ggnkc/image/upload/v1782455914/cv6qgi7xzhfi0ih0figg.png";
+const GOLD_ROUND =
+  "https://res.cloudinary.com/dcc5ggnkc/image/upload/v1782455916/lpsmvmif3wf2r2wsr7jc.png";
 
 const CATEGORIES: { slug: string; name: string; description: string }[] = [
   {
-    slug: "optical",
-    name: "Optical",
-    description: "Cat-eye and clear optical frames, glazed to your prescription on request.",
+    slug: "prescription",
+    name: "Prescription",
+    description: "Single-vision, bifocal, and progressive lenses glazed to your exact prescription.",
   },
   {
-    slug: "clip-on",
-    name: "Clip-ons",
-    description: "Magnetic clip-on glasses — switch from clear to shaded in a click.",
+    slug: "futuristic",
+    name: "Futuristic",
+    description: "Bold, forward silhouettes — wraps and shields built for the road ahead.",
   },
   {
-    slug: "statement",
-    name: "Statement",
-    description: "Bold shapes and sunglasses made to be noticed.",
+    slug: "blue-light",
+    name: "Blue Light",
+    description: "Screen-day comfort that filters the glare, all day.",
   },
 ];
 
@@ -82,71 +89,91 @@ const CATEGORIES: { slug: string; name: string; description: string }[] = [
 // as "new arrivals", so lead with the hero pieces.
 const PRODUCTS: ProductSpec[] = [
   {
-    slug: "tortoise-cat-eye",
-    name: "Tortoise Cat-Eye",
-    price: "220.00",
-    category: "optical",
+    slug: "apex-geo",
+    name: "Apex Geo",
+    price: "920.00",
+    category: "futuristic",
     description:
-      "A warm tortoiseshell cat-eye with a confident lift — a flattering optical frame, glazed to your prescription on request.",
-    tags: ["optical", "cat-eye", "signature", "new"],
+      "A faceted, geometric acetate frame in deep green — the statement piece of the futuristic line.",
+    tags: ["futuristic", "geometric", "signature"],
+    isSignature: true,
+    images: [GREEN_HEX, SILVER_AVIATOR],
+  },
+  {
+    slug: "aria-round",
+    name: "Aria Round",
+    price: "680.00",
+    category: "prescription",
+    description:
+      "A soft, translucent round optical frame glazed to your prescription. Lightweight and balanced all day.",
+    tags: ["prescription", "optical", "signature"],
+    isSignature: true,
+    images: [PINK_ROUND, TORTOISE_CATEYE],
+  },
+  {
+    slug: "halo-screen",
+    name: "Halo Screen Glasses",
+    price: "540.00",
+    category: "blue-light",
+    description:
+      "A clear, modern square frame that filters blue-light glare for long screen days without tinting the world.",
+    tags: ["blue-light", "screen", "signature", "new"],
     isSignature: true,
     isNew: true,
-    images: [TORT_CATEYE, TORT_PRODUCT],
+    images: [CLEAR_SQUARE, GOLD_ROUND],
   },
   {
-    slug: "noir-cat-eye",
-    name: "Noir Cat-Eye",
-    price: "220.00",
-    category: "optical",
+    slug: "nova-aviator",
+    name: "Nova Aviator",
+    price: "780.00",
+    category: "futuristic",
     description:
-      "A glossy black cat-eye with a sharp upsweep — a bold everyday frame that goes with everything.",
-    tags: ["optical", "cat-eye", "signature"],
-    isSignature: true,
-    images: [NOIR_CATEYE, TORT_CATEYE],
-  },
-  {
-    slug: "clip-on-set",
-    name: "Clip-On Glasses Set",
-    price: "300.00",
-    category: "clip-on",
-    description:
-      "A magnetic clip-on set that switches your frames from clear to shaded in a click — one frame, every mood.",
-    tags: ["clip-on", "set", "signature", "new"],
-    isSignature: true,
+      "A precision metal aviator with a slim brow bar — classic silhouette, forward finish.",
+    tags: ["futuristic", "aviator", "new"],
     isNew: true,
-    images: [CLIPON_FAN, NOIR_CATEYE],
+    images: [SILVER_AVIATOR, GREEN_HEX],
   },
   {
-    slug: "clear-optical",
-    name: "Clear Optical Frame",
-    price: "200.00",
-    category: "optical",
+    slug: "soleil-cat-eye",
+    name: "Soleil Cat-Eye",
+    price: "620.00",
+    category: "prescription",
     description:
-      "A clean, translucent optical frame that filters blue-light glare for long screen days — light and balanced all day.",
-    tags: ["optical", "clear", "new"],
+      "A glossy red cat-eye with a sharp upsweep — a bold optical frame glazed to your strength.",
+    tags: ["prescription", "cat-eye", "new"],
     isNew: true,
-    images: [TORT_PRODUCT, NOIR_CATEYE],
+    images: [RED_CATEYE, PINK_ROUND],
   },
   {
-    slug: "bold-statement",
-    name: "Bold Statement Frame",
-    price: "240.00",
-    category: "statement",
+    slug: "vortex-sport",
+    name: "Vortex Sport",
+    price: "880.00",
+    category: "futuristic",
     description:
-      "A bold, oversized silhouette made to be noticed — the frame that finishes the look.",
-    tags: ["statement", "bold", "new"],
+      "A close-fit matte sport frame built to stay put and cut the glare — the everyday futuristic wrap.",
+    tags: ["futuristic", "sport"],
+    images: [NAVY_SPORT, GREEN_HEX],
+  },
+  {
+    slug: "marlowe-cat-eye",
+    name: "Marlowe Cat-Eye",
+    price: "660.00",
+    category: "prescription",
+    description:
+      "A warm tortoise cat-eye with a confident lift — a heritage optical shape, reworked.",
+    tags: ["prescription", "cat-eye"],
+    images: [TORTOISE_CATEYE, RED_CATEYE],
+  },
+  {
+    slug: "lumen-gold",
+    name: "Lumen Gold",
+    price: "510.00",
+    category: "blue-light",
+    description:
+      "A slim gold round frame for the desk-to-dusk routine — quiet confidence with blue-light filtering.",
+    tags: ["blue-light", "screen", "new"],
     isNew: true,
-    images: [NOIR_CATEYE, CLIPON_FAN],
-  },
-  {
-    slug: "clip-on-duo",
-    name: "Clip-On Duo",
-    price: "300.00",
-    category: "clip-on",
-    description:
-      "Two clip-on shades for one optical frame — switch your tint to match the day.",
-    tags: ["clip-on", "duo"],
-    images: [CLIPON_FAN, TORT_CATEYE],
+    images: [GOLD_ROUND, CLEAR_SQUARE],
   },
 ];
 
@@ -154,16 +181,16 @@ const PRODUCTS: ProductSpec[] = [
 // kept stable so existing `/collections/<slug>` links stay valid.
 const COLLECTIONS: { slug: string; name: string; description: string; productSlugs: string[] }[] = [
   {
-    slug: "new-2026",
-    name: "New In 2026",
-    description: "The latest line-up — optical, clip-on, and statement frames.",
-    productSlugs: ["tortoise-cat-eye", "clip-on-set", "clear-optical", "bold-statement"],
+    slug: "summer-2026",
+    name: "New Frames 2026",
+    description: "The new season line-up — optical, futuristic, and blue-light frames.",
+    productSlugs: ["apex-geo", "aria-round", "halo-screen", "nova-aviator"],
   },
   {
     slug: "best-sellers",
     name: "Best Sellers",
     description: "The frames everyone's reaching for.",
-    productSlugs: ["noir-cat-eye", "tortoise-cat-eye", "clip-on-duo", "clear-optical"],
+    productSlugs: ["aria-round", "soleil-cat-eye", "marlowe-cat-eye", "lumen-gold"],
   },
 ];
 

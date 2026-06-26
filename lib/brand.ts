@@ -180,22 +180,26 @@ export interface Brand {
   };
 }
 
-// ── Cloudinary media (Stage 4 upload, folder stage4/pinkpalace) ──
+// Stage 4 contract: the hero/campaign imagery, the hero video, and the product
+// shots stay the curated Palmshades demo media. The ONLY business-specific media
+// are the logo (here) and the TikTok-section videos (components/social-videos.tsx).
 const LOGO =
   "https://res.cloudinary.com/dzykdnbvb/raw/upload/v1782492504/stage4/pinkpalace/logo.svg";
-const SHOT_TORT =
-  "https://res.cloudinary.com/dzykdnbvb/image/upload/v1782492278/stage4/pinkpalace/img_000.jpg"; // tortoiseshell cat-eye on model
-const SHOT_BLACK =
-  "https://res.cloudinary.com/dzykdnbvb/image/upload/v1782492281/stage4/pinkpalace/img_001.jpg"; // black cat-eye on model
-const SHOT_PRODUCT =
-  "https://res.cloudinary.com/dzykdnbvb/image/upload/v1782492283/stage4/pinkpalace/img_002.jpg"; // tortoiseshell product shot w/ logo
-const SHOT_STORE =
-  "https://res.cloudinary.com/dzykdnbvb/image/upload/v1782492284/stage4/pinkpalace/cover_000.jpg"; // in-store, clip-on fan
-const HERO_VIDEO =
-  "https://res.cloudinary.com/dzykdnbvb/video/upload/v1782492288/stage4/pinkpalace/hero_video.mp4";
+
+// Curated demo photography (Palmshades base) — unchanged per business.
+const heroPhotoA =
+  "https://res.cloudinary.com/dcc5ggnkc/image/upload/v1782453637/piustckyhcidu3usaa55.jpg";
+const heroPhotoB =
+  "https://res.cloudinary.com/dcc5ggnkc/image/upload/v1782397287/mypkwrjgq5etmjttwkzb.jpg";
+const heroPhotoC =
+  "https://res.cloudinary.com/dcc5ggnkc/image/upload/v1782397287/nnudhxncil1iurojonlg.jpg";
+const heroPhotoD =
+  "https://res.cloudinary.com/dcc5ggnkc/image/upload/v1782454245/pv64w5hstpcbyq3ltfwn.jpg";
+const heroPhotoE =
+  "https://res.cloudinary.com/dcc5ggnkc/image/upload/v1782453469/aaggivzgiyfnoespzzw2.jpg";
 
 // index 0 doubles as the OG/metadata hero; index 5 surfaces in the editorial panel.
-const campaignImages = [SHOT_STORE, SHOT_TORT, SHOT_BLACK, SHOT_PRODUCT, SHOT_TORT, SHOT_BLACK];
+const campaignImages = [heroPhotoA, heroPhotoC, heroPhotoB, heroPhotoD, heroPhotoE, heroPhotoB];
 
 export const brand: Brand = {
   name: "Pink Palace",
@@ -443,9 +447,9 @@ export const brand: Brand = {
         title: "Shop",
         links: [
           { label: "All products", href: "/shop" },
-          { label: "Optical", href: "/categories/optical" },
-          { label: "Clip-ons", href: "/categories/clip-on" },
-          { label: "Statement", href: "/categories/statement" },
+          { label: "Prescription", href: "/categories/prescription" },
+          { label: "Futuristic", href: "/categories/futuristic" },
+          { label: "Blue Light", href: "/categories/blue-light" },
         ],
       },
       {
@@ -494,23 +498,30 @@ export const brand: Brand = {
     logo: LOGO,
     footerLogo: LOGO,
     hero: campaignImages[0],
-    heroVideo: HERO_VIDEO,
+    heroVideo:
+      "https://res.cloudinary.com/dcc5ggnkc/video/upload/v1782396828/jwadlxpq5dl7dtmsrxvo.mp4",
     campaign: campaignImages,
-    hoodedSet: SHOT_STORE,
-    summer2026: [SHOT_PRODUCT, SHOT_TORT, SHOT_BLACK, SHOT_STORE],
-    denimStory: SHOT_PRODUCT,
+    hoodedSet: "https://res.cloudinary.com/dcc5ggnkc/image/upload/v1781852219/sfw0czastb6tkjkw47v0.jpg",
+    summer2026: [
+      "https://res.cloudinary.com/dcc5ggnkc/image/upload/w_1600,q_auto,f_auto/v1782397347/vpqc2def1pfo1j4lnxvn.png",
+      "https://res.cloudinary.com/dcc5ggnkc/image/upload/w_1600,q_auto,f_auto/v1782397348/exlwdxciti1fol6ncbxx.png",
+      "https://res.cloudinary.com/dcc5ggnkc/image/upload/w_1600,q_auto,f_auto/v1782397346/aefp7ltn5oghf1owrye6.png",
+      "https://res.cloudinary.com/dcc5ggnkc/image/upload/w_1600,q_auto,f_auto/v1782397345/wbdvsp4wuqzphtya36ig.png",
+    ],
+    denimStory:
+      "https://res.cloudinary.com/dcc5ggnkc/image/upload/v1782453469/aaggivzgiyfnoespzzw2.jpg",
   },
 
   fashion: {
-    season: "EYEWEAR & JEWELRY",
+    season: "2026 FRAME COLLECTION",
     summer2026: {
-      eyebrow: "New season",
-      title: "Cat-eye optical frames.",
-      body: "Soft, flattering cat-eye shapes glazed to your prescription on request — the frames everyone's reaching for.",
+      eyebrow: "2026 collection",
+      title: "Prescription glasses.",
+      body: "Single-vision, bifocal, and progressive lenses glazed to your exact prescription and fitted into the frame you love.",
       primaryCtaLabel: "Shop the collection",
       primaryCtaHref: "/shop",
       secondaryCtaLabel: "View lookbook",
-      secondaryCtaHref: "/collections/new-2026",
+      secondaryCtaHref: "/collections/summer-2026",
       signalEyebrow: "New in",
       signalTitle: "Three frames. One clear look.",
       imageKicker: "2026",
@@ -519,63 +530,66 @@ export const brand: Brand = {
     },
     campaignTitle: "See clearly, look sharp.",
     campaignBody:
-      "Frames and pieces built for movement and light — shapes that keep their edge from morning to night.",
+      "Frames built for movement and light — shapes that keep their edge from desk to dusk.",
     categoryHighlight: {
       eyebrow: "Shop by category",
       title: "Find your frame.",
       items: [
         {
-          slug: "optical",
-          label: "Optical",
-          blurb: "Cat-eye and clear frames, glazed to your prescription on request.",
-          href: "/categories/optical",
-          image: SHOT_TORT,
+          slug: "prescription",
+          label: "Prescription",
+          blurb: "Glazed to your exact prescription and fitted to the frame you love.",
+          href: "/categories/prescription",
+          image:
+            "https://res.cloudinary.com/dcc5ggnkc/image/upload/v1782453637/piustckyhcidu3usaa55.jpg",
         },
         {
-          slug: "clip-on",
-          label: "Clip-ons",
-          blurb: "Magnetic clip-on sets — switch your look in a click.",
-          href: "/categories/clip-on",
-          image: SHOT_STORE,
+          slug: "futuristic",
+          label: "Futuristic",
+          blurb: "Bold, forward silhouettes for the road ahead.",
+          href: "/categories/futuristic",
+          image:
+            "https://res.cloudinary.com/dcc5ggnkc/image/upload/v1782453469/aaggivzgiyfnoespzzw2.jpg",
         },
         {
-          slug: "statement",
-          label: "Statement",
-          blurb: "Bold shapes and sunglasses made to be noticed.",
-          href: "/categories/statement",
-          image: SHOT_BLACK,
+          slug: "blue-light",
+          label: "Blue light blocking",
+          blurb: "Screen-day comfort that filters the glare, all day.",
+          href: "/categories/blue-light",
+          image:
+            "https://res.cloudinary.com/dcc5ggnkc/image/upload/v1782454245/pv64w5hstpcbyq3ltfwn.jpg",
         },
       ],
     },
     seenBy: {
       eyebrow: "Pink Palace",
-      title: "Worn by Accra",
+      title: "Worn by the culture",
       people: [
         {
-          role: "Optical",
-          name: "Everyday cat-eye",
-          image: SHOT_TORT,
+          role: "Prescription",
+          name: "Everyday optical",
+          image: "https://res.cloudinary.com/dcc5ggnkc/image/upload/v1782453468/zrtfpjieyq1ks1ydivqe.jpg",
         },
         {
-          role: "Statement",
-          name: "Bold black frame",
-          image: SHOT_BLACK,
+          role: "Blue light",
+          name: "Screen-day comfort",
+          image: "https://res.cloudinary.com/dcc5ggnkc/image/upload/v1782453468/v12wvmsoavepamencymx.jpg",
         },
         {
-          role: "Clip-on",
-          name: "Switch your look",
-          image: SHOT_STORE,
+          role: "Futuristic",
+          name: "Statement shades",
+          image: "https://res.cloudinary.com/dcc5ggnkc/image/upload/v1782453469/yvojtaua1fvkdshh7j3k.jpg",
         },
       ],
     },
-    mensTitle: "Optical frames",
-    mensBody: "Clean cat-eye and rounded shapes, glazed to your prescription on request.",
-    womensTitle: "Statement frames",
-    womensBody: "Bold colour and sharp silhouettes — frames made to be noticed.",
-    denimTitle: "Clip-on sets",
-    denimBody: "Magnetic clip-ons that switch your look in a click — clear to shaded in one move.",
+    mensTitle: "Men's frames",
+    mensBody: "Clean optical shapes, sharp metals, and everyday frames built to be worn daily.",
+    womensTitle: "Women's frames",
+    womensBody: "Cat-eyes, soft rounds, and statement colour — frames made to be noticed.",
+    denimTitle: "Future-facing",
+    denimBody: "Sculpted wraps and shields with an edge — the frames that turn heads after dark.",
     accessoriesTitle: "Complete the look",
-    accessoriesBody: "Jewelry, cases, cords, and cloths to keep every frame sharp.",
+    accessoriesBody: "Cases, microfibre cloths, cords, and lens care to keep every frame sharp.",
     socialHandle: "@_pinkpalace_",
   },
 };
